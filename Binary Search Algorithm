@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int n,high,low,mid,i,key;
+    char ch;
+
+    cout<<"\nEnter Array Size: ";
+    cin>>n;
+
+    int a[n];
+    cout<<"\nEnter the Array Elements in Sorted Form: ";
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+
+    do
+    {
+        cout<<"\nEnter the Element to be Searched: ";
+        cin>>key;
+
+        low=0;
+        high=n-1;
+        int flag=0;
+
+        while(low<=high)
+        {
+            mid=(low+high)/2;
+
+            if(a[mid]==key)
+            {
+                flag=1;
+                break;
+            }
+            else if(key<a[mid])
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+
+        if(flag==1)
+        {
+            cout<<"\nElement Found at Index: " <<mid;
+        }
+        else
+        {
+            cout<<"\nElement Not Found :(";
+        }
+
+        cout<<"\nWant to Search Again? (y/n): ";
+        cin>>ch;
+
+    } while(ch=='y'||ch=='Y');
+
+    return 0;
+}
